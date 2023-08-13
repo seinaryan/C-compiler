@@ -453,9 +453,10 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "lexer.l"
 #line 2 "lexer.l"
+	//jsandalsndalskndlasndl
 	#include<stdio.h>
-#line 458 "lex.yy.c"
 #line 459 "lex.yy.c"
+#line 460 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -672,10 +673,10 @@ YY_DECL
 		}
 
 	{
-#line 12 "lexer.l"
+#line 13 "lexer.l"
 
 
-#line 679 "lex.yy.c"
+#line 680 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -734,46 +735,46 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "lexer.l"
+#line 15 "lexer.l"
 {	printf("%s is a keyword\n", yytext);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "lexer.l"
+#line 16 "lexer.l"
 {	printf("%s is an identifier\n", yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "lexer.l"
+#line 17 "lexer.l"
 {	printf("%s is an operator\n", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "lexer.l"
+#line 18 "lexer.l"
 {	printf("%s is a digit\n", yytext);}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 18 "lexer.l"
+#line 19 "lexer.l"
 {	/*Do nothing*/}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 "lexer.l"
+#line 20 "lexer.l"
 {	printf("End of line\n"); return 0;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "lexer.l"
+#line 21 "lexer.l"
 {	printf("%s is an invalid character\n", yytext); return 0;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 21 "lexer.l"
+#line 22 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 777 "lex.yy.c"
+#line 778 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1778,7 +1779,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 21 "lexer.l"
+#line 22 "lexer.l"
 
 
 int yywrap(){

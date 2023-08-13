@@ -1,1 +1,1 @@
-lex lex.l && gcc lex.yy.c && ./a.out
+lex lexer.l && gcc lex.yy.c && yacc parser.y
