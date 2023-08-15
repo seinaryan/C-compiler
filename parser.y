@@ -69,15 +69,11 @@ int yylex(void) {
 	return tokens[token_id++];
 }
 
-void yyerror(const char * s)
-/* yacc error handler */
-{
-	fprintf (stderr, "%s\n", s);
+#include "lex.yy.c"
+
+
+void yyerror(const char *s) {
+	printf("Error: %s\n", s);
 }
 
-int main()
-{
-	yyparse();
-	return 0;
-
-}
+	

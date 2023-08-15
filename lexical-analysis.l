@@ -1,5 +1,4 @@
 %{
-	//jsandalsndalskndlasndl
 	#include<stdio.h>
 %}
 
@@ -23,10 +22,6 @@ WHITE_SPACE [ \t \n]
 
 int yywrap(){
 	return 1;}
-int main(){
-	printf("Enter the expression: ");
-	yylex();
-	return 0;
-}
+
 
 	 
