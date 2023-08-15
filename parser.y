@@ -66,17 +66,6 @@ Factor : '(' Expression ')'
 
 #include "lex.yy.c"
 
-#include "lex.yy.c"
-
-
 void yyerror(const char *s) {
 	printf("Error: %s\n", s);
-}
-
-int main()
-{
-
-	yyparse();
-	return 0;
-
 }

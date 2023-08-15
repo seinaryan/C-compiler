@@ -1,0 +1,497 @@
+Terminals unused in grammar
+
+    FOR
+
+
+Grammar
+
+    0 $accept: Program $end
+
+    1 Program: StatementList
+
+    2 StatementList: StatementList Statement
+    3              | ε
+
+    4 Statement: PrintStatement
+    5          | AssignmentStatement
+    6          | IfStatement
+    7          | WhileStatement
+
+    8 PrintStatement: PRINT Expression ';'
+
+    9 AssignmentStatement: IDENTIFIER '=' Expression ';'
+
+   10 IfStatement: IF '(' Expression ')' Statement
+
+   11 WhileStatement: WHILE '(' Expression ')' Statement
+
+   12 Expression: Expression '+' Term
+   13           | Expression '-' Term
+   14           | Term
+
+   15 Term: Term '*' Factor
+   16     | Term '/' Factor
+   17     | Factor
+
+   18 Factor: '(' Expression ')'
+   19       | NUMBER
+   20       | IDENTIFIER
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    '(' (40) 10 11 18
+    ')' (41) 10 11 18
+    '*' (42) 15
+    '+' (43) 12
+    '-' (45) 13
+    '/' (47) 16
+    ';' (59) 8 9
+    '=' (61) 9
+    error (256)
+    NUMBER (258) 19
+    IDENTIFIER (259) 9 20
+    PRINT (260) 8
+    IF (261) 10
+    WHILE (262) 11
+    FOR (263)
+
+
+Nonterminals, with rules where they appear
+
+    $accept (17)
+        on left: 0
+    Program (18)
+        on left: 1
+        on right: 0
+    StatementList (19)
+        on left: 2 3
+        on right: 1 2
+    Statement (20)
+        on left: 4 5 6 7
+        on right: 2 10 11
+    PrintStatement (21)
+        on left: 8
+        on right: 4
+    AssignmentStatement (22)
+        on left: 9
+        on right: 5
+    IfStatement (23)
+        on left: 10
+        on right: 6
+    WhileStatement (24)
+        on left: 11
+        on right: 7
+    Expression (25)
+        on left: 12 13 14
+        on right: 8 9 10 11 12 13 18
+    Term (26)
+        on left: 15 16 17
+        on right: 12 13 14 15 16
+    Factor (27)
+        on left: 18 19 20
+        on right: 15 16 17
+
+
+State 0
+
+    0 $accept: • Program $end
+
+    $default  reduce using rule 3 (StatementList)
+
+    Program        go to state 1
+    StatementList  go to state 2
+
+
+State 1
+
+    0 $accept: Program • $end
+
+    $end  shift, and go to state 3
+
+
+State 2
+
+    1 Program: StatementList •
+    2 StatementList: StatementList • Statement
+
+    IDENTIFIER  shift, and go to state 4
+    PRINT       shift, and go to state 5
+    IF          shift, and go to state 6
+    WHILE       shift, and go to state 7
+
+    $default  reduce using rule 1 (Program)
+
+    Statement            go to state 8
+    PrintStatement       go to state 9
+    AssignmentStatement  go to state 10
+    IfStatement          go to state 11
+    WhileStatement       go to state 12
+
+
+State 3
+
+    0 $accept: Program $end •
+
+    $default  accept
+
+
+State 4
+
+    9 AssignmentStatement: IDENTIFIER • '=' Expression ';'
+
+    '='  shift, and go to state 13
+
+
+State 5
+
+    8 PrintStatement: PRINT • Expression ';'
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Expression  go to state 17
+    Term        go to state 18
+    Factor      go to state 19
+
+
+State 6
+
+   10 IfStatement: IF • '(' Expression ')' Statement
+
+    '('  shift, and go to state 20
+
+
+State 7
+
+   11 WhileStatement: WHILE • '(' Expression ')' Statement
+
+    '('  shift, and go to state 21
+
+
+State 8
+
+    2 StatementList: StatementList Statement •
+
+    $default  reduce using rule 2 (StatementList)
+
+
+State 9
+
+    4 Statement: PrintStatement •
+
+    $default  reduce using rule 4 (Statement)
+
+
+State 10
+
+    5 Statement: AssignmentStatement •
+
+    $default  reduce using rule 5 (Statement)
+
+
+State 11
+
+    6 Statement: IfStatement •
+
+    $default  reduce using rule 6 (Statement)
+
+
+State 12
+
+    7 Statement: WhileStatement •
+
+    $default  reduce using rule 7 (Statement)
+
+
+State 13
+
+    9 AssignmentStatement: IDENTIFIER '=' • Expression ';'
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Expression  go to state 22
+    Term        go to state 18
+    Factor      go to state 19
+
+
+State 14
+
+   19 Factor: NUMBER •
+
+    $default  reduce using rule 19 (Factor)
+
+
+State 15
+
+   20 Factor: IDENTIFIER •
+
+    $default  reduce using rule 20 (Factor)
+
+
+State 16
+
+   18 Factor: '(' • Expression ')'
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Expression  go to state 23
+    Term        go to state 18
+    Factor      go to state 19
+
+
+State 17
+
+    8 PrintStatement: PRINT Expression • ';'
+   12 Expression: Expression • '+' Term
+   13           | Expression • '-' Term
+
+    ';'  shift, and go to state 24
+    '+'  shift, and go to state 25
+    '-'  shift, and go to state 26
+
+
+State 18
+
+   14 Expression: Term •
+   15 Term: Term • '*' Factor
+   16     | Term • '/' Factor
+
+    '*'  shift, and go to state 27
+    '/'  shift, and go to state 28
+
+    $default  reduce using rule 14 (Expression)
+
+
+State 19
+
+   17 Term: Factor •
+
+    $default  reduce using rule 17 (Term)
+
+
+State 20
+
+   10 IfStatement: IF '(' • Expression ')' Statement
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Expression  go to state 29
+    Term        go to state 18
+    Factor      go to state 19
+
+
+State 21
+
+   11 WhileStatement: WHILE '(' • Expression ')' Statement
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Expression  go to state 30
+    Term        go to state 18
+    Factor      go to state 19
+
+
+State 22
+
+    9 AssignmentStatement: IDENTIFIER '=' Expression • ';'
+   12 Expression: Expression • '+' Term
+   13           | Expression • '-' Term
+
+    ';'  shift, and go to state 31
+    '+'  shift, and go to state 25
+    '-'  shift, and go to state 26
+
+
+State 23
+
+   12 Expression: Expression • '+' Term
+   13           | Expression • '-' Term
+   18 Factor: '(' Expression • ')'
+
+    ')'  shift, and go to state 32
+    '+'  shift, and go to state 25
+    '-'  shift, and go to state 26
+
+
+State 24
+
+    8 PrintStatement: PRINT Expression ';' •
+
+    $default  reduce using rule 8 (PrintStatement)
+
+
+State 25
+
+   12 Expression: Expression '+' • Term
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Term    go to state 33
+    Factor  go to state 19
+
+
+State 26
+
+   13 Expression: Expression '-' • Term
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Term    go to state 34
+    Factor  go to state 19
+
+
+State 27
+
+   15 Term: Term '*' • Factor
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Factor  go to state 35
+
+
+State 28
+
+   16 Term: Term '/' • Factor
+
+    NUMBER      shift, and go to state 14
+    IDENTIFIER  shift, and go to state 15
+    '('         shift, and go to state 16
+
+    Factor  go to state 36
+
+
+State 29
+
+   10 IfStatement: IF '(' Expression • ')' Statement
+   12 Expression: Expression • '+' Term
+   13           | Expression • '-' Term
+
+    ')'  shift, and go to state 37
+    '+'  shift, and go to state 25
+    '-'  shift, and go to state 26
+
+
+State 30
+
+   11 WhileStatement: WHILE '(' Expression • ')' Statement
+   12 Expression: Expression • '+' Term
+   13           | Expression • '-' Term
+
+    ')'  shift, and go to state 38
+    '+'  shift, and go to state 25
+    '-'  shift, and go to state 26
+
+
+State 31
+
+    9 AssignmentStatement: IDENTIFIER '=' Expression ';' •
+
+    $default  reduce using rule 9 (AssignmentStatement)
+
+
+State 32
+
+   18 Factor: '(' Expression ')' •
+
+    $default  reduce using rule 18 (Factor)
+
+
+State 33
+
+   12 Expression: Expression '+' Term •
+   15 Term: Term • '*' Factor
+   16     | Term • '/' Factor
+
+    '*'  shift, and go to state 27
+    '/'  shift, and go to state 28
+
+    $default  reduce using rule 12 (Expression)
+
+
+State 34
+
+   13 Expression: Expression '-' Term •
+   15 Term: Term • '*' Factor
+   16     | Term • '/' Factor
+
+    '*'  shift, and go to state 27
+    '/'  shift, and go to state 28
+
+    $default  reduce using rule 13 (Expression)
+
+
+State 35
+
+   15 Term: Term '*' Factor •
+
+    $default  reduce using rule 15 (Term)
+
+
+State 36
+
+   16 Term: Term '/' Factor •
+
+    $default  reduce using rule 16 (Term)
+
+
+State 37
+
+   10 IfStatement: IF '(' Expression ')' • Statement
+
+    IDENTIFIER  shift, and go to state 4
+    PRINT       shift, and go to state 5
+    IF          shift, and go to state 6
+    WHILE       shift, and go to state 7
+
+    Statement            go to state 39
+    PrintStatement       go to state 9
+    AssignmentStatement  go to state 10
+    IfStatement          go to state 11
+    WhileStatement       go to state 12
+
+
+State 38
+
+   11 WhileStatement: WHILE '(' Expression ')' • Statement
+
+    IDENTIFIER  shift, and go to state 4
+    PRINT       shift, and go to state 5
+    IF          shift, and go to state 6
+    WHILE       shift, and go to state 7
+
+    Statement            go to state 40
+    PrintStatement       go to state 9
+    AssignmentStatement  go to state 10
+    IfStatement          go to state 11
+    WhileStatement       go to state 12
+
+
+State 39
+
+   10 IfStatement: IF '(' Expression ')' Statement •
+
+    $default  reduce using rule 10 (IfStatement)
+
+
+State 40
+
+   11 WhileStatement: WHILE '(' Expression ')' Statement •
+
+    $default  reduce using rule 11 (WhileStatement)
