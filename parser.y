@@ -17,7 +17,6 @@ void yyerror(const char *s);
 %token PRINT
 %token IF
 %token WHILE
-%token FOR
 
 
 %%
@@ -52,6 +51,7 @@ Expression : Expression '+' Term
 	| Term
 	{
 		printf("Expression formed\n");
+
 	}
 	;
 Term : Term '*' Factor
@@ -64,10 +64,7 @@ Factor : '(' Expression ')'
 	;
 %%
 
-int yylex(void) {
-	int tokens [] = {PRINT, IDENTIFIER, ';', 0};
-	return tokens[token_id++];
-}
+#include "lex.yy.c"
 
 #include "lex.yy.c"
 
@@ -76,4 +73,10 @@ void yyerror(const char *s) {
 	printf("Error: %s\n", s);
 }
 
-	
+int main()
+{
+
+	yyparse();
+	return 0;
+
+}
